@@ -15,28 +15,28 @@ export const getPostsService = async () => {
   });
 };
 
-// export const createPostService = async (data: CreatePostInput) => {
-//   return prisma.post.create({
-//     data: {
-//       title: data.title,
-//       content: data.content,
+export const createPostService = async (data: CreatePostInput) => {
+  return prisma.post.create({
+    data: {
+      title: data.title,
+      content: data.content,
 
-//       // default fields
-//       status: "DRAFT",
-//       tags: [],
-//       views: 0,
+      // default fields
+      status: "DRAFT",
+      tags: [],
+      views: 0,
+      //
+      // relation fix
+      author: {
+        connect: {
+          id: data.authorId,
+        },
+      },
+    },
 
-//     //   // relation fix
-//     //   author: {
-//     //     connect: {
-//     //       id: data.authorId,
-//     //     },
-//       },
-//     },
-
-//     // include: {
-//     //   author: true,
-//     //   comments: true,
-//     // },
-// //   });
-// };
+    include: {
+      author: true,
+      comments: true,
+    },
+  });
+};
