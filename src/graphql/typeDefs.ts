@@ -1,8 +1,7 @@
-// /graphql/typeDefs.ts
-
 import { authType } from "../modules/auth/auth.type.js";
 import { postType } from "../modules/post/post.type.js";
 import { userType } from "../modules/user/user.type.js";
+import { commentType } from "../modules/comment/comment.type.js";
 
 export const typeDefs = [
   `#graphql
@@ -17,4 +16,5 @@ export const typeDefs = [
   authType,
   userType,
   postType,
+  commentType,
 ];

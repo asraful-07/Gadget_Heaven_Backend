@@ -22,7 +22,7 @@ export const commentResolver = {
       return createCommentService({
         postId: args.postId,
         content: args.content,
-        authorId: context.userId, // 🔥 JWT context থেকে
+        authorId: context.userId,
       });
     },
   },

@@ -9,7 +9,7 @@ interface CreatePostInput {
 export const getPostsService = async () => {
   return prisma.post.findMany({
     include: {
-      author: true,
+      authors: true,
       comments: true,
     },
   });
@@ -27,7 +27,7 @@ export const createPostService = async (data: CreatePostInput) => {
       views: 0,
       //
       // relation fix
-      author: {
+      authors: {
         connect: {
           id: data.authorId,
         },
@@ -35,7 +35,7 @@ export const createPostService = async (data: CreatePostInput) => {
     },
 
     include: {
-      author: true,
+      authors: true,
       comments: true,
     },
   });

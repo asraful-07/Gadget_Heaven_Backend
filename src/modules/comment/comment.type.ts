@@ -1,16 +1,19 @@
-type Comment {
-  id: ID!
-  content: String!
-  createdAt: String!
-  post: Post!
-  author: User!
-}
-// src/modules/comment/comment.type.ts
-type Query {
-  comments: [Comment!]!
-  commentsByPost(postId: ID!): [Comment!]!
-}
+export const commentType = `#graphql
+  type Comment {
+    id: ID!
+    content: String!
+    author: User!
+    post: Post!
+    createdAt: String!
+    updatedAt: String!
+  }
 
-type Mutation {
-  createComment(postId: ID!, content: String!): Comment!
-}
+  extend type Query {
+    comments: [Comment!]!
+    commentsByPost(postId: ID!): [Comment!]!
+  }
+
+  extend type Mutation {
+    createComment(postId: ID!, content: String!): Comment!
+  }
+`;
